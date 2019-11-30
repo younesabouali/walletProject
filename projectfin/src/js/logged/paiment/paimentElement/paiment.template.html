@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Paiment for the month:{{$ctrl.item.month}}</h5>
+        <p class="card-text">
+          client : {{$ctrl.item.name}}
+        </p>
+        <p class="card-text">
+          price : {{$ctrl.item.amount}}
+        </p>
+        <p class="card-text">
+          Paid : {{$ctrl.item.paid?true:false}}
+        </p>
+        <p class="card-text">
+          type : {{$ctrl.item.type}}
+        </p>
+        <p class="card-text">
+          Date Of Paiment : {{$ctrl.item.Date.slice(0,10)}}
+        </p>
+        <button
+          class="btn btn-danger"
+          ng-click="$ctrl.onRemove({id:$ctrl.item.id})"
+        >
+          delete Paiment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

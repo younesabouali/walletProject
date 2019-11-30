@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand " ui-sref="main">Wallet</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      <li class="nav-item  mr-4">
+        <a class="nav-link " ui-sref="main.status" ui-sref-active="active">
+          Status <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.paiments" ui-sref-active="active"
+          >Paiments <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.bills" ui-sref-active="active"
+          >Bills <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.clients"
+          >Clients <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.purchases"
+          >Purchases <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.providers"
+          >Providers <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ui-sref="main.billsPurchase"
+          >billsPurchase <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" ng-click="$ctrl.logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

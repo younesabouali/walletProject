@@ -1,0 +1,40 @@
+<form name="AddPaiment" ng-submit="$ctrl.addPaiment()" novalidate>
+  <my-input
+    type="text"
+    name="detail"
+    form="addPaiment"
+    declare-value="$ctrl.body.detail = value"
+  ></my-input>
+  <my-input
+    type="text"
+    name="client"
+    form="addPaiment"
+    declare-value="$ctrl.body.client = value"
+  ></my-input>
+  <my-input
+    type="number"
+    name="amount"
+    form="addPaiment"
+    declare-value="$ctrl.body.amount = value"
+  ></my-input>
+  <my-options
+    name="type"
+    values="['bill','cash','cheque']"
+    declare-value="$ctrl.body.type = value"
+  ></my-options>
+  <div ng-if="$ctrl.body.type === 'bill'">
+    <my-input
+      type="date"
+      name="date"
+      form="addPaiment"
+      declare-value="$ctrl.body.Date = value"
+    ></my-input>
+  </div>
+  <button
+    type="submit"
+    ng-disabled="AddPaiment.$invalid"
+    class="btn btn-primary"
+  >
+    save
+  </button>
+</form>

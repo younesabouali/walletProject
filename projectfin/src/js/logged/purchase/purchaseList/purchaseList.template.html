@@ -1,0 +1,16 @@
+<h1 class="alert alert-warning mt-4">Purchases</h1>
+<div class="btn-group " role="group" aria-label="Basic example">
+  <button class="btn btn-danger " ng-click="$ctrl.toggle()">
+    {{$ctrl.btn}}
+  </button>
+</div>
+<div ng-if="$ctrl.data.length===0 && $ctrl.show">
+  <div class="alert alert-info mt-2">No Purchase Founded</div>
+</div>
+<div ng-show="$ctrl.show" class="mt-4">
+  <purchase
+    ng-repeat="item in $ctrl.data"
+    item="item"
+    on-remove="$ctrl.remove(id)"
+  ></purchase>
+</div>

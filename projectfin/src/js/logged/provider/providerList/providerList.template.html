@@ -1,0 +1,14 @@
+<h1 class="alert alert-warning mt-4">Providers</h1>
+<button class="btn btn-danger " ng-click="$ctrl.toggle()">
+  {{$ctrl.btn}}
+</button>
+<div ng-if="$ctrl.data.length===0 && $ctrl.show">
+  <div class="alert alert-info mt-2">No Provider Founded</div>
+</div>
+<div ng-show="$ctrl.show" class="mt-4">
+  <provider
+    ng-repeat="item in $ctrl.data"
+    item="item"
+    on-remove="$ctrl.remove(id)"
+  ></provider>
+</div>

@@ -1,0 +1,15 @@
+<div class="form-group">
+  <label for="{{$ctrl.name}}">Example select</label>
+  <select
+    class="form-control"
+    id="exampleFormControlSelect1"
+    ng-model="$ctrl.value"
+    ng-selected="$ctrl.declareValue({value:$ctrl.value})"
+  >
+    <div>
+      <option ng-repeat="name in $ctrl.values" value="{{name}}">
+        {{name}}</option
+      >
+    </div>
+  </select>
+</div>

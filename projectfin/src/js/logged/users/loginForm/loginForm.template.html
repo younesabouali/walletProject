@@ -1,0 +1,19 @@
+<form name="Login" ng-submit="$ctrl.login()" novalidate>
+  <my-input
+    type="email"
+    name="Email"
+    form="Login"
+    declare-value="$ctrl.body.email = value"
+  ></my-input>
+
+  <my-input
+    type="password"
+    name="Password"
+    form="Login"
+    declare-value="$ctrl.body.password = value"
+  ></my-input>
+  <button type="submit" ng-disabled="Login.$invalid" class="btn btn-primary">
+    Login
+  </button>
+  <a ui-sref="register">register</a>
+</form>

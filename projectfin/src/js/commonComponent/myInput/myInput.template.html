@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label for="{{$ctrl.name}}">{{$ctrl.item}}</label>
+  <input
+    type="{{$ctrl.type}}"
+    name="{{$ctrl.name}}"
+    ng-model="$ctrl.value"
+    ng-change="$ctrl.declareValue({value:$ctrl.value})"
+    class="form-control"
+    aria-describedby="{{$ctrl.name}}Help"
+    placeholder="Enter {{$ctrl.name}}"
+    required
+  />
+</div>
+<p
+  class="alert alert-danger"
+  role="alert"
+  ng-show="{{$ctrl.form}}.{{$ctrl.name}}.$touched  && {{$ctrl.form}}.{{$ctrl.name}}.$invalid"
+>
+  You must pass a valid {{$ctrl.name}}
+</p>
