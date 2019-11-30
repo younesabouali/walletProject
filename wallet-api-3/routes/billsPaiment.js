@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Paiment } = require("../model/paiment");
 const { Client } = require("../model/client");
+const datefns = require("date-fns");
 const auth = require("../middleware/auth");
 
 router.get("/", auth, async (req, res) => {
@@ -30,39 +31,14 @@ router.get("/byMonth/:statusId", auth, async (req, res) => {
   });
   res.send(paiments);
 });
-router.get("/warnings/:userId", auth, async (req, res) => {
-  const paiments = Paiment.findAll({
-    where: { type: "bill", statusId: req.params.statusId, paid: false }
-  });
-  const warnings = paiments.map(paiment => {
-    if (paiment.year === new Date().getFullYear()) {
-      if (paiment.month === new Date().getMonth() + 1) {
-        if (2 < paiment.Day - new Date().getDate() < 5) {
-          const objectWarning = {
-            Detail: paiment.detail,
-            Amount: paiment.amount,
-            warning: "less than five days"
-          };
-          return objectWarning;
-        } else if (1 < paiment.Day - new Date().getDate() <= 2) {
-          const objectWarning = {
-            Detail: paiment.detail,
-            Amount: paiment.amount,
-            warning: "less than 2 days"
-          };
-          return objectWarning;
-        } else if (0 < paiment.Day - new Date().getDate() <= 1) {
-          const objectWarning = {
-            Detail: paiment.detail,
-            Amount: paiment.amount,
-            warning: "less than 1 day"
-          };
-          return objectWarning;
-        }
-      }
-    }
-  });
-  res.status(200).send([warnings]);
-});
 
+router.get("/warnings", auth, async (req, res) => {
+  const paiments = await Paiment.findAll({
+    where: { type: "bill", userId: req.user.id, paid: false }
+  });
+  const warnings = paiments.map(purchase => {
+    return datefns.differenceInDays(purchase.Date, new Date());
+  });
+  res.status(200).send(warnings);
+});
 module.exports = router;

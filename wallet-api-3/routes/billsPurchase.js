@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Purchase } = require("../model/purchase");
 const { Provider } = require("../model/provider");
+const datefns = require("date-fns");
 const auth = require("../middleware/auth");
 
 router.get("/", auth, async (req, res) => {
@@ -32,39 +33,14 @@ router.get("/byMonth/:statusId", auth, async (req, res) => {
   });
   res.send(purchases);
 });
-// router.get("/warnings/:statusId", auth, async (req, res) => {
-//   const purchases = Purchase.findAll({
-//     where: { type: "bill", statusId: req.params.statusId, paid: false }
-//   });
-//   const warnings = purchases.map(purchase => {
-//     if (purchase.year === new Date().getFullYear()) {
-//       if (purchase.month === new Date().getMonth() + 1) {
-//         if (2 < purchase.Day - new Date().getDate() < 5) {
-//           const objectWarning = {
-//             Detail: purchase.detail,
-//             Amount: purchase.amount,
-//             warning: "less than five days"
-//           };
-//           return objectWarning;
-//         } else if (1 < purchase.Day - new Date().getDate() <= 2) {
-//           const objectWarning = {
-//             Detail: purchase.detail,
-//             Amount: purchase.amount,
-//             warning: "less than 2 days"
-//           };
-//           return objectWarning;
-//         } else if (0 < purchase.Day - new Date().getDate() <= 1) {
-//           const objectWarning = {
-//             Detail: purchase.detail,
-//             Amount: purchase.amount,
-//             warning: "less than 1 day"
-//           };
-//           return objectWarning;
-//         }
-//       }
-//     }
-//   });
-//   res.status(200).send([warnings]);
-// });
+router.get("/warnings", auth, async (req, res) => {
+  const purchases = await Purchase.findAll({
+    where: { type: "bill", userId: req.user.id, paid: false }
+  });
+  const warnings = purchases.map(purchase => {
+    return datefns.differenceInDays(purchase.Date, new Date());
+  });
+  res.status(200).send(warnings);
+});
 
 module.exports = router;

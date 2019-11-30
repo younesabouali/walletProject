@@ -22,6 +22,10 @@
         url: "/paiments",
         templateUrl: "src/views/paiments.html"
       })
+      .state("main.paiment", {
+        url: "/paiment",
+        templateUrl: "src/views/paiment.html"
+      })
       .state("main.billsPurchase", {
         url: "/billsPurchase",
         templateUrl: "src/views/billsPurchase.html"
@@ -41,6 +45,10 @@
       .state("main.purchases", {
         url: "/purchases",
         templateUrl: "src/views/purchases.html"
+      })
+      .state("main.purchase", {
+        url: "/purchase",
+        templateUrl: "src/views/purchase.html"
       })
       .state("main.status", {
         url: "/status",

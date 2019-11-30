@@ -8,6 +8,8 @@
     "User",
     "Purchase",
     "Provider",
-    "BillPurchase"
+    "BillPurchase",
+    "warningPaimentList",
+    "warningPurchaseList"
   ]);
 })();
