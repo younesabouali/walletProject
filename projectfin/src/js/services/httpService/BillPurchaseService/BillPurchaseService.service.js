@@ -19,7 +19,7 @@
       return http.put("billsPurchase/" + details.id, details.body);
     };
     service.delete = async function(details) {
-      const res = await http.delete("billsPurchase/" + details);
+      const res = await http.delete("purchases/" + details);
       return res;
     };
   }

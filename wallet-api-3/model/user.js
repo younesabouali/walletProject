@@ -34,11 +34,11 @@ User.init(
   { sequelize, modelName: "user" }
 );
 User.addHook("afterCreate", async (user, options) => {
-  const status = await Status.create({
+  const status = Status.build({
     month: new Date().getMonth() + 1,
-    year: new Date().getFullYear(),
-    time: new Date()
+    year: new Date().getFullYear()
   });
+  await status.save();
   await user.addStatus(status);
 });
 

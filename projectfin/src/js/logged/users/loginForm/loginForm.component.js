@@ -11,7 +11,7 @@
       UserService.login({
         email: $ctrl.body.email,
         password: $ctrl.body.password
-      }).then(res => ($ctrl.data = res));
+      });
     };
   }
 })();

@@ -6,7 +6,7 @@
     var service = this;
     var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
     service.getStatuses = function() {
-      return http.get("status//MonthDetail");
+      return http.get("status//MonthDetail").then(res => res.data);
     };
   }
 })();

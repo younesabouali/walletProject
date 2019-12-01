@@ -8,7 +8,11 @@
       onRemove: "&"
     }
   });
+
   function paimentController() {
     const $ctrl = this;
+    // $ctrl.$onInit = PaimentService.getById($stateParams.id).then(res => {
+    //   $ctrl.item = res.data;
+    // });
   }
 })();

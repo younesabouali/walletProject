@@ -1,26 +1,27 @@
 (function() {
   "use strict";
   angular.module("PurchaseService").service("PurchaseService", PurchaseService);
-  PurchaseService.$inject = ["http", "jwtHelper"];
-  function PurchaseService(http, jwtHelper) {
+  PurchaseService.$inject = ["http", "jwtHelper", "$location"];
+  function PurchaseService(http, jwtHelper, $location) {
     var service = this;
     var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
-
-    service.get = async function() {
-      const res = await http.get("purchases");
-      return res;
+    service.getById = function(id) {
+      return http.get("purchases/" + id).then(res => res.data);
     };
-    service.add = async function(body) {
-      const res = await http.post({ link: "purchases", body });
-      return res;
+    service.get = function() {
+      return http.get("purchases").then(res => res.data);
+    };
+    service.add = function(body) {
+      return http
+        .post({ link: "purchases", body })
+        .then(() => $location.path("/main").replace());
     };
 
-    service.update = async function(details) {
+    service.update = function(details) {
       return http.put("purchases/" + details.id, details.body);
     };
     service.delete = async function(details) {
-      const res = await http.delete("purchases/" + details);
-      return res;
+      return http.delete("purchases/" + details);
     };
   }
 })();

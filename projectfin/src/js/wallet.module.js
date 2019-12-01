@@ -5,6 +5,9 @@
     "logged",
     "commonComponent",
     "ui.router",
-    "angular-jwt"
+    "angular-jwt",
+    "PaimentService",
+    "PurchaseService",
+    "UserService"
   ]);
 })();

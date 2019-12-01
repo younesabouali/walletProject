@@ -17,7 +17,7 @@
       return http.put("billsPaiment/" + details.id, details.body);
     };
     service.delete = async function(details) {
-      const res = await http.delete("billsPaiment/" + details);
+      const res = await http.delete("paiments/" + details);
       return res;
     };
   }

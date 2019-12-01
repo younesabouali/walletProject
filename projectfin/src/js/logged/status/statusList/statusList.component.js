@@ -7,8 +7,6 @@
   statusListController.$inject = ["StatusService"];
   function statusListController(StatusService) {
     var $ctrl = this;
-    $ctrl.$onInt = StatusService.getStatuses().then(function(res) {
-      $ctrl.data = res.data;
-    });
+    StatusService.getStatuses().then(res => ($ctrl.data = res));
   }
 })();

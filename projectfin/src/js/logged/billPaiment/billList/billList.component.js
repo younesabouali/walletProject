@@ -5,7 +5,7 @@
     controller: billListController
   });
   billListController.$inject = ["BillService"];
-  function billListController(BillService, $scope) {
+  function billListController(BillService) {
     const $ctrl = this;
     $ctrl.$onInt = BillService.get().then(function(res) {
       $ctrl.data = res.data;

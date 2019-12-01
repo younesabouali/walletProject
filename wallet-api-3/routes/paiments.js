@@ -24,6 +24,22 @@ router.get("/", auth, async (req, res) => {
   });
   res.send(Objectres);
 });
+router.get("/:id", auth, async (req, res) => {
+  if (req.params.id === "undefined") return;
+  const paiment = await Paiment.findByPk(req.params.id);
+  if (!paiment) return res.status(404).send("Paiment Not Found");
+  const client = await Client.findByPk(paiment.clientId);
+  const Objectres = {
+    id: paiment.id,
+    amount: paiment.amount,
+    paid: paiment.paid,
+    type: paiment.type,
+    Date: paiment.Date,
+    name: client.name
+  };
+
+  res.send(Objectres);
+});
 router.post("/", auth, async (req, res) => {
   const user = await User.findByPk(req.user.id);
 

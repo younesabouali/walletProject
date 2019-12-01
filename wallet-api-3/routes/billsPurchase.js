@@ -14,6 +14,7 @@ router.get("/", auth, async (req, res) => {
     .filter(purchase => purchase.type === "bill")
     .map(purchase => {
       const object = {
+        id: purchase.id,
         amount: purchase.amount,
         paid: purchase.paid,
         type: purchase.type,
@@ -38,7 +39,11 @@ router.get("/warnings", auth, async (req, res) => {
     where: { type: "bill", userId: req.user.id, paid: false }
   });
   const warnings = purchases.map(purchase => {
-    return datefns.differenceInDays(purchase.Date, new Date());
+    const object = {
+      daysLeft: datefns.differenceInDays(purchase.Date, new Date()),
+      purchaseId: purchase.id
+    };
+    return object;
   });
   res.status(200).send(warnings);
 });

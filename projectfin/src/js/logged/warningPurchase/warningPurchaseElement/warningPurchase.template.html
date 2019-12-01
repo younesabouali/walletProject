@@ -1,4 +1,6 @@
 <p>
-  You Have {{$ctrl.item}} days left To pay this
-  <a class="alert-link">Purchase</a>
+  You Have {{$ctrl.item.daysLeft}} days left To pay this
+  <a class="alert-link" ui-sref="main.purchase({id:$ctrl.item.purchaseId})"
+    >Purchase</a
+  >
 </p>

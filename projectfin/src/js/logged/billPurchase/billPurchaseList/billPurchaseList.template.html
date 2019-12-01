@@ -6,9 +6,9 @@
   <div class="alert alert-info mt-2">No Bill Founded</div>
 </div>
 <div ng-show="$ctrl.show" class="mt-4">
-  <bill
+  <bill-purchase
     ng-repeat="item in $ctrl.data"
     item="item"
     on-remove="$ctrl.remove(id)"
-  ></bill>
+  ></bill-purchase>
 </div>

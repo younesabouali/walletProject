@@ -1,4 +1,4 @@
 (function() {
   "use strict";
-  angular.module("purchase", []);
+  angular.module("purchase", ["PurchaseService"]);
 })();

@@ -8,9 +8,7 @@
   purchaseListController.$inject = ["PurchaseService"];
   function purchaseListController(PurchaseService) {
     const $ctrl = this;
-    $ctrl.$onInt = PurchaseService.get().then(function(res) {
-      $ctrl.data = res.data;
-    });
+    PurchaseService.get().then(res => ($ctrl.data = res));
     $ctrl.btn = "show Purchases";
     $ctrl.toggle = function() {
       if ($ctrl.show === true) {

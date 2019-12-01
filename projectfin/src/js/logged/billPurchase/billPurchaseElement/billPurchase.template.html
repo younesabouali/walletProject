@@ -12,6 +12,7 @@
         <p class="card-text">
           Date : {{$ctrl.item.Date.slice(0,10)}}
         </p>
+        <button class="btn btn-primary">Pay This Bill</button>
         <button
           class="btn btn-danger"
           ng-click="$ctrl.onRemove({id:$ctrl.item.id})"

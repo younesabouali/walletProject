@@ -9,7 +9,11 @@
       onRemove: "&"
     }
   });
-  function purchaseController() {
+  purchaseController.$inject = ["$stateParams", "PurchaseService"];
+  function purchaseController($stateParams, PurchaseService) {
     const $ctrl = this;
+    // $ctrl.$onInit = PurchaseService.getById($stateParams.id).then(res => {
+    //   $ctrl.item = res.data;
+    // });
   }
 })();

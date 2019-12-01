@@ -7,9 +7,7 @@
   paimentListController.$inject = ["PaimentService"];
   function paimentListController(PaimentService) {
     const $ctrl = this;
-    $ctrl.$onInt = PaimentService.get().then(function(res) {
-      $ctrl.data = res.data;
-    });
+    $ctrl.$onInt = PaimentService.get().then(res => ($ctrl.data = res));
     $ctrl.btn = "show Paiments";
     $ctrl.toggle = function() {
       if ($ctrl.show === true) {

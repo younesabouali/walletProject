@@ -4,7 +4,7 @@
     templateUrl: "/src/js/logged/paiment/paimentForm/paimentForm.template.html",
     controller: paimentFormController
   });
-  paimentFormController.$inject = ["PaimentService", "$location"];
+  paimentFormController.$inject = ["PaimentService"];
   function paimentFormController(PaimentService, $location) {
     const $ctrl = this;
     $ctrl.addPaiment = function() {
@@ -15,7 +15,7 @@
         amount: $ctrl.body.amount,
         Date: $ctrl.body.Date,
         type: $ctrl.body.type
-      }).then(() => $location.path("/main").replace());
+      });
     };
   }
 })();

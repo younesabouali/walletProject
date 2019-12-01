@@ -1,26 +1,29 @@
 (function() {
   "use strict";
   angular.module("PaimentService").service("PaimentService", PaimentService);
-  PaimentService.$inject = ["http", "jwtHelper"];
-  function PaimentService(http, jwtHelper) {
+  PaimentService.$inject = ["http", "jwtHelper", "$location"];
+  function PaimentService(http, jwtHelper, $location) {
     var service = this;
     var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
+    service.getById = function(id) {
+      return http.get("paiments/" + id).then(res => res.data);
+    };
+    service.get = function() {
+      return http.get("paiments").then(res => res.data);
+    };
+    service.add = function(body) {
+      return http
+        .post({ link: "paiments", body })
+        .then(() => $location.path("/main").replace());
+    };
 
-    service.get = async function() {
-      const res = await http.get("paiments");
-      return res;
+    service.update = function(details) {
+      return http
+        .put("paiments/" + details.id, details.body)
+        .then(res => res.data);
     };
-    service.add = async function(body) {
-      const res = await http.post({ link: "paiments", body });
-      return res;
-    };
-
-    service.update = async function(details) {
-      return http.put("paiments/" + details.id, details.body);
-    };
-    service.delete = async function(details) {
-      const res = await http.delete("paiments/" + details);
-      return res;
+    service.delete = function(details) {
+      return http.delete("paiments/" + details).then(res => res.data);
     };
   }
 })();

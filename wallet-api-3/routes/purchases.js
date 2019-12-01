@@ -24,6 +24,22 @@ router.get("/", auth, async (req, res) => {
   });
   res.send(Objectres);
 });
+router.get("/:id", async (req, res) => {
+  if (req.params.id === "undefined") return;
+  const purchase = await Purchase.findByPk(req.params.id);
+  if (!purchase) return res.status(404).send("Purchase Not Found");
+  const provider = await Provider.findByPk(purchase.providerId);
+  const Objectres = {
+    id: purchase.id,
+    amount: purchase.amount,
+    paid: purchase.paid,
+    type: purchase.type,
+    Date: purchase.Date,
+    name: provider.name
+  };
+  res.send(Objectres);
+});
+
 router.post("/", auth, async (req, res) => {
   const user = await User.findByPk(req.user.id);
 

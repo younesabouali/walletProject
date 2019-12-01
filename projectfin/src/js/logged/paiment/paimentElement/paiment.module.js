@@ -1,4 +1,4 @@
 (function() {
   "use strict";
-  angular.module("paiment", []);
+  angular.module("paiment", ["ui.router", "PaimentService"]);
 })();

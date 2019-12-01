@@ -16,8 +16,8 @@ router.post("/", async (req, res) => {
   await Status.findOrCreate({
     where: {
       userId: user.id,
-      Month: new Date().getMonth() + 1,
-      Year: new Date().getFullYear()
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear()
     }
   });
   const token = jwt.sign({ id: user.id, userName: user.name }, "shhhhh");

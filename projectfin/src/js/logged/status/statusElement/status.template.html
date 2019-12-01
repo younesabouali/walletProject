@@ -3,7 +3,10 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">
-          Status for the month:{{$ctrl.item.month}} of {{$ctrl.item.year}}
+          Status for the month:{{$ctrl.item.month}} of {{$ctrl.item.year}}<span
+            ng-if="$ctrl.$index === 0"
+            >Current Month</span
+          >
         </h5>
         <p class="card-text">
           Month Paiment : {{$ctrl.item.Gain}}

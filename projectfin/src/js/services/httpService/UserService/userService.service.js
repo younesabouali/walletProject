@@ -6,22 +6,36 @@
   function UserService(http, jwtHelper, $location) {
     var service = this;
 
-    service.register = async function(body) {
-      const res = await http.post({ link: "users", body });
-      localStorage.setItem("token", res.data);
-      var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
+    service.register = function(body) {
+      const res = http.post({ link: "users", body }).then(res => {
+        localStorage.setItem("token", res.data);
+        var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
 
-      $location.path("/main");
-      return tokenPayload;
+        $location.path("/main");
+        return tokenPayload;
+      });
     };
-    service.login = async function(body) {
-      const res = await http.post({ link: "auth", body });
+    service.authToken = function() {
+      try {
+        jwtHelper.decodeToken(localStorage.getItem("token"));
+        $location.path("/main").replace();
+      } catch (error) {
+        return;
+      }
 
-      localStorage.setItem("token", res.data);
-      var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
+      return;
+    };
+    service.getToken = function() {
+      return jwtHelper.decodeToken(localStorage.getItem("token"));
+    };
+    service.login = function(body) {
+      http.post({ link: "auth", body }).then(res => {
+        localStorage.setItem("token", res.data);
+        var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
 
-      $location.path("/main");
-      return tokenPayload;
+        $location.path("/main");
+        return tokenPayload;
+      });
     };
     service.logout = function() {
       localStorage.removeItem("token");
