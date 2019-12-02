@@ -1,10 +1,9 @@
 (function() {
   "use strict";
   angular.module("PaimentService").service("PaimentService", PaimentService);
-  PaimentService.$inject = ["http", "jwtHelper", "$location"];
-  function PaimentService(http, jwtHelper, $location) {
+  PaimentService.$inject = ["http", "$location"];
+  function PaimentService(http, $location) {
     var service = this;
-    var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
     service.getById = function(id) {
       return http.get("paiments/" + id).then(res => res.data);
     };

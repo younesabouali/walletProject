@@ -10,6 +10,8 @@
     "Provider",
     "BillPurchase",
     "warningPaimentList",
-    "warningPurchaseList"
+    "warningPurchaseList",
+    "PaimentService",
+    "PurchaseService"
   ]);
 })();

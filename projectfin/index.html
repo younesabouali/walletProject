@@ -11,9 +11,17 @@
     <script src="/src/lib/angular.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script> -->
     <script src="src/lib/angular-ui-router.min.js"></script>
+    <!-- jwt -->
+    <script src="/src/lib/angularJwt/angularJwt.js"></script>
+    <script src="/src/lib/angularJwt/services/authManager.js"></script>
+    <script src="/src/lib/angularJwt/services/interceptor.js"></script>
+    <script src="/src/lib/angularJwt/services/jwt.js"></script>
+    <script src="/src/lib/angularJwt/services/jwtOptions.js"></script>
+    <script src="/src/lib/angularJwt/services/urlUtils.js"></script>
     <!-- Modules -->
     <script src="/src/js/wallet.module.js"></script>
     <script src="/src/js/logged/logged.module.js"></script>
+    <script src="/src/js/unlogged/unlogged.module.js"></script>
     <script src="/src/js/commonComponent/commonComponent.module.js"></script>
 
     <script src="/src/js/logged/status/Status.module.js"></script>
@@ -66,17 +74,15 @@
     <script src="/src/js/services/httpService/ProviderService/ProviderService.module.js"></script>
     <script src="/src/js/services/httpService/WarningPurchaseService/WarningPurchaseService.module.js"></script>
     <script src="/src/js/services/httpService/WarningPaimentService/WarningPaimentService.module.js"></script>
-    <!-- jwt -->
-    <script src="/src/js/services/angularJwt/angularJwt.js"></script>
-    <script src="/src/js/services/angularJwt/services/authManager.js"></script>
-    <script src="/src/js/services/angularJwt/services/interceptor.js"></script>
-    <script src="/src/js/services/angularJwt/services/jwt.js"></script>
-    <script src="/src/js/services/angularJwt/services/jwtOptions.js"></script>
-    <script src="/src/js/services/angularJwt/services/urlUtils.js"></script>
-    <!-- Controller -->
-    <script src="/src/js/walletRoutesController.js"></script>
-    <!-- Components -->
+    <!-- Routes -->
     <script src="/src/js/routes.js"></script>
+    <script src="/src/js/unlogged/unloggedRoutes.js"></script>
+    <script src="/src/js/logged/loggedRoutes.js"></script>
+    <!-- Routes Controller -->
+    <script src="/src/js/walletRoutesController.js"></script>
+    <script src="/src/js/logged/loggedRoutesController.js"></script>
+    <!-- Controller -->
+    <!-- Components -->
     <script src="/src/js/logged/users/user.component.js"></script>
     <script src="/src/js/logged/status/statusElement/status.component.js"></script>
     <script src="/src/js/logged/client/clientElement/client.component.js"></script>

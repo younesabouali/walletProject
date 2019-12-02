@@ -1,4 +1,4 @@
 (function() {
   "use strict";
-  angular.module("PurchaseService", ["http", "angular-jwt"]);
+  angular.module("PurchaseService", ["http"]);
 })();

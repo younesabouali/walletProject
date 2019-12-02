@@ -3,11 +3,10 @@
 
   angular.module("wallet", [
     "logged",
+    "unlogged",
     "commonComponent",
     "ui.router",
     "angular-jwt",
-    "PaimentService",
-    "PurchaseService",
     "UserService"
   ]);
 })();

@@ -1,4 +1,4 @@
 (function() {
   "use strict";
-  angular.module("unlogged", []);
+  angular.module("unlogged", ["ui.router"]);
 })();

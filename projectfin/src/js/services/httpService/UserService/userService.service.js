@@ -7,7 +7,7 @@
     var service = this;
 
     service.register = function(body) {
-      const res = http.post({ link: "users", body }).then(res => {
+      http.post({ link: "users", body }).then(res => {
         localStorage.setItem("token", res.data);
         var tokenPayload = jwtHelper.decodeToken(localStorage.getItem("token"));
 
@@ -18,7 +18,6 @@
     service.authToken = function() {
       try {
         jwtHelper.decodeToken(localStorage.getItem("token"));
-        $location.path("/main").replace();
       } catch (error) {
         return;
       }
@@ -26,7 +25,11 @@
       return;
     };
     service.getToken = function() {
-      return jwtHelper.decodeToken(localStorage.getItem("token"));
+      try {
+        return jwtHelper.decodeToken(localStorage.getItem("token"));
+      } catch (error) {
+        $location.path("/login").replace();
+      }
     };
     service.login = function(body) {
       http.post({ link: "auth", body }).then(res => {
